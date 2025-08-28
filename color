@@ -178,9 +178,91 @@ local function CreateThemeButton(theme)
        
         local newSky = Instance.new("Sky")
         newSky.Parent = game.Lighting
-
-        
-        print("Selected sky: "..theme)
+        if theme == "CakeUP Night Galaxy Planets" then
+            newSky.SkyboxUp = "rbxassetid://15983964246"
+            newSky.SkyboxDn = "rbxassetid://15983966825"
+            newSky.SkyboxLf = "rbxassetid://15983967420"
+            newSky.SkyboxRt = "rbxassetid://15983966246"
+            newSky.SkyboxFt = "rbxassetid://15983965025"
+            newSky.SkyboxBk = "rbxassetid://15983968922"
+        elseif theme == "Purple Space" then
+            newSky.SkyboxUp = "rbxassetid://14543371676"
+            newSky.SkyboxDn = "rbxassetid://14543358958"
+            newSky.SkyboxLf = "rbxassetid://14543275895"
+            newSky.SkyboxRt = "rbxassetid://14543280890"
+            newSky.SkyboxFt = "rbxassetid://14543257810"
+            newSky.SkyboxBk = "rbxassetid://14543264135"
+        elseif theme == "Galaxy Mountains" then
+            newSky.SkyboxUp = "rbxassetid://17103639457"
+            newSky.SkyboxDn = "rbxassetid://17103622190"
+            newSky.SkyboxLf = "rbxassetid://17103628153"
+            newSky.SkyboxRt = "rbxassetid://17103636666"
+            newSky.SkyboxFt = "rbxassetid://17103624898"
+            newSky.SkyboxBk = "rbxassetid://17103618635"
+        elseif theme == "Deep Space" then
+            newSky.SkyboxUp = "rbxassetid://159248176"
+            newSky.SkyboxDn = "rbxassetid://159248183"
+            newSky.SkyboxLf = "rbxassetid://159248173"
+            newSky.SkyboxRt = "rbxassetid://159248192"
+            newSky.SkyboxFt = "rbxassetid://159248187"
+            newSky.SkyboxBk = "rbxassetid://159248188"
+        elseif theme == "Nebula" then
+            newSky.SkyboxUp = "rbxassetid://13581450222"
+            newSky.SkyboxDn = "rbxassetid://13581439832"
+            newSky.SkyboxLf = "rbxassetid://13581443463"
+            newSky.SkyboxRt = "rbxassetid://13581452875"
+            newSky.SkyboxFt = "rbxassetid://13581447312"
+            newSky.SkyboxBk = "rbxassetid://13581437029"
+        elseif theme == "Night" then
+            newSky.SkyboxUp = "rbxassetid://12064131"
+            newSky.SkyboxDn = "rbxassetid://12064152"
+            newSky.SkyboxLf = "rbxassetid://12063984"
+            newSky.SkyboxRt = "rbxassetid://12064115"
+            newSky.SkyboxFt = "rbxassetid://12064121"
+            newSky.SkyboxBk = "rbxassetid://12064107"
+        elseif theme == "Alien Red" then
+            newSky.SkyboxUp = "rbxassetid://1014449"
+            newSky.SkyboxDn = "rbxassetid://1012891"
+            newSky.SkyboxLf = "rbxassetid://1012889"
+            newSky.SkyboxRt = "rbxassetid://1012888"
+            newSky.SkyboxFt = "rbxassetid://1012887"
+            newSky.SkyboxBk = "rbxassetid://1012890"
+        elseif theme == "Tropical" then
+            newSky.SkyboxUp = "rbxassetid://169210149"
+            newSky.SkyboxDn = "rbxassetid://169210108"
+            newSky.SkyboxLf = "rbxassetid://169210133"
+            newSky.SkyboxRt = "rbxassetid://169210143"
+            newSky.SkyboxFt = "rbxassetid://169210121"
+            newSky.SkyboxBk = "rbxassetid://169210090"
+        elseif theme == "Day Clouds" then
+            newSky.SkyboxUp = "rbxassetid://17480119200"
+            newSky.SkyboxDn = "rbxassetid://17480112104"
+            newSky.SkyboxLf = "rbxassetid://17480115228"
+            newSky.SkyboxRt = "rbxassetid://17480116763"
+            newSky.SkyboxFt = "rbxassetid://17480113810"
+            newSky.SkyboxBk = "rbxassetid://17480111006"
+        elseif theme == "Minecraft" then
+            newSky.SkyboxUp = "rbxassetid://1876544642"
+            newSky.SkyboxDn = "rbxassetid://1876544331"
+            newSky.SkyboxLf = "rbxassetid://1876543392"
+            newSky.SkyboxRt = "rbxassetid://1876543764"
+            newSky.SkyboxFt = "rbxassetid://1876542941"
+            newSky.SkyboxBk = "rbxassetid://1876545003"
+        elseif theme == "Anime Island" then
+            newSky.SkyboxUp = "rbxassetid://14753810287"
+            newSky.SkyboxDn = "rbxassetid://14753795573"
+            newSky.SkyboxLf = "rbxassetid://14753797417"
+            newSky.SkyboxRt = "rbxassetid://14753799966"
+            newSky.SkyboxFt = "rbxassetid://14753807625"
+            newSky.SkyboxBk = "rbxassetid://14753804949"
+        elseif theme == "Wide Street" then
+            newSky.SkyboxUp = "rbxassetid://11805842108"
+            newSky.SkyboxDn = "rbxassetid://11805844871"
+            newSky.SkyboxLf = "rbxassetid://11805843612"
+            newSky.SkyboxRt = "rbxassetid://11805841159"
+            newSky.SkyboxFt = "rbxassetid://11805842926"
+            newSky.SkyboxBk = "rbxassetid://11805845809"
+        end
     end)
 
     return Button
