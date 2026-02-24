@@ -6,13 +6,13 @@ local RunService       = game:GetService("RunService")
 local LocalPlayer = Players.LocalPlayer
 local PlayerGui   = LocalPlayer:WaitForChild("PlayerGui")
 
-
+-- ── Exact VEXZY.HUB palette ───────────────────────────────────────────────
 local accentColor = Color3.fromRGB(100, 140, 255)   -- hub blue
 local darkBg      = Color3.fromRGB(6,   6,  16)     -- near-black base
 local panelBg     = Color3.fromRGB(16,  16, 36)     -- row/button bg
 local rowHover    = Color3.fromRGB(30,  50, 120)     -- hover highlight
 
-
+-- ── Click sound (same as hub) ─────────────────────────────────────────────
 local function clickSound()
     local s = Instance.new("Sound")
     s.SoundId = "rbxassetid://87152549167464"
@@ -21,7 +21,7 @@ local function clickSound()
     game:GetService("Debris"):AddItem(s, 2)
 end
 
-
+-- ── ScreenGui ─────────────────────────────────────────────────────────────
 if PlayerGui:FindFirstChild("VexzySkyGUI") then
     PlayerGui.VexzySkyGUI:Destroy()
 end
@@ -32,14 +32,14 @@ ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 ScreenGui.DisplayOrder   = 10
 ScreenGui.Parent         = PlayerGui
 
-
+-- ── MainContainer — identical construction to hub ─────────────────────────
 local MainContainer = Instance.new("Frame", ScreenGui)
 MainContainer.Size     = UDim2.new(0, 300, 0, 400)
 MainContainer.Position = UDim2.new(0.5, -150, 0.5, -200)
 MainContainer.BackgroundTransparency = 1
 MainContainer.ClipsDescendants = false
 
-
+-- Dark gradient background layer (exact hub recipe)
 local bl = Instance.new("Frame", MainContainer)
 bl.Size = UDim2.new(1,0,1,0)
 bl.BackgroundColor3       = darkBg
@@ -60,7 +60,7 @@ task.spawn(function()
 end)
 Instance.new("UICorner", MainContainer).CornerRadius = UDim.new(0, 14)
 
-
+-- Pulsing border (exact hub heartbeat formula)
 local Border = Instance.new("UIStroke", MainContainer)
 Border.Thickness       = 3
 Border.Color           = accentColor
@@ -72,7 +72,7 @@ RunService.Heartbeat:Connect(function()
     Border.Transparency = 0.1 + 0.4 * (0.5 + 0.5 * math.sin(tick() * 2.2))
 end)
 
-
+-- ── Snow particle system (same as hub SnowCanvas) ─────────────────────────
 local mpc = Instance.new("Frame", MainContainer)
 mpc.BackgroundTransparency = 1
 mpc.Size             = UDim2.new(1, 0, 1, 0)
@@ -116,7 +116,7 @@ for i = 1, 30 do
     task.delay(i * 0.15, function() if mpc and mpc.Parent then drop() end end)
 end
 
-
+-- ── Title bar ─────────────────────────────────────────────────────────────
 -- Title text — GothamBlack 20px, exact hub positioning
 local TitleText = Instance.new("TextLabel", MainContainer)
 TitleText.Name                  = "TitleText"
@@ -130,7 +130,7 @@ TitleText.TextSize              = 20
 TitleText.TextXAlignment        = Enum.TextXAlignment.Left
 TitleText.ZIndex                = 3
 
-
+-- Subtitle tag "Sky Themes" in accent blue — hub subtitle style
 local SubText = Instance.new("TextLabel", MainContainer)
 SubText.BackgroundTransparency  = 1
 SubText.Position                = UDim2.new(0, 10, 0, 28)
@@ -141,11 +141,11 @@ SubText.TextColor3              = accentColor
 SubText.TextSize                = 11
 SubText.TextXAlignment          = Enum.TextXAlignment.Left
 SubText.ZIndex                  = 3
-
+-- Subtle breathing on subtitle color
 TweenService:Create(SubText, TweenInfo.new(2, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut, -1, true),
     {TextColor3 = Color3.fromRGB(160, 200, 255)}):Play()
 
-
+-- Pulsing accent dot (left of title, matches hub log card dot)
 local TitleDot = Instance.new("Frame", MainContainer)
 TitleDot.Size             = UDim2.new(0, 6, 0, 6)
 TitleDot.AnchorPoint      = Vector2.new(0, 0.5)
@@ -157,7 +157,7 @@ Instance.new("UICorner", TitleDot).CornerRadius = UDim.new(1, 0)
 TweenService:Create(TitleDot, TweenInfo.new(1.1, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut, -1, true),
     {BackgroundColor3 = Color3.fromRGB(200, 225, 255), Size = UDim2.new(0, 7, 0, 7)}):Play()
 
-
+-- Title divider line — exact hub style
 local titleDiv = Instance.new("Frame", MainContainer)
 titleDiv.BackgroundColor3       = accentColor
 titleDiv.BackgroundTransparency = 0.5
@@ -166,7 +166,7 @@ titleDiv.Position               = UDim2.new(0, 8, 0, 44)
 titleDiv.Size                   = UDim2.new(1, -16, 0, 1)
 titleDiv.ZIndex                 = 3
 
-
+-- Minimize button — exact hub styling (blue bg, GothamBold, rounded 7px)
 local MinimizeButton = Instance.new("TextButton", MainContainer)
 MinimizeButton.Text             = "−"
 MinimizeButton.Size             = UDim2.new(0, 26, 0, 26)
@@ -182,7 +182,7 @@ do local s = Instance.new("UIStroke", MinimizeButton); s.Color = accentColor; s.
 MinimizeButton.MouseEnter:Connect(function() TweenService:Create(MinimizeButton, TweenInfo.new(0.15), {BackgroundColor3 = Color3.fromRGB(80,120,255)}):Play() end)
 MinimizeButton.MouseLeave:Connect(function() TweenService:Create(MinimizeButton, TweenInfo.new(0.15), {BackgroundColor3 = Color3.fromRGB(40,80,180)}):Play() end)
 
-
+-- Close button — exact hub styling (red-pink bg)
 local CloseButton = Instance.new("TextButton", MainContainer)
 CloseButton.Text             = "✕"
 CloseButton.Size             = UDim2.new(0, 26, 0, 26)
@@ -198,7 +198,7 @@ do local s = Instance.new("UIStroke", CloseButton); s.Color = Color3.fromRGB(255
 CloseButton.MouseEnter:Connect(function() TweenService:Create(CloseButton, TweenInfo.new(0.15), {BackgroundColor3 = Color3.fromRGB(220,50,100)}):Play() end)
 CloseButton.MouseLeave:Connect(function() TweenService:Create(CloseButton, TweenInfo.new(0.15), {BackgroundColor3 = Color3.fromRGB(160,30,80)}):Play() end)
 
-
+-- ── Scroll frame ──────────────────────────────────────────────────────────
 local ScrollFrame = Instance.new("ScrollingFrame", MainContainer)
 ScrollFrame.Size                  = UDim2.new(1, -8, 1, -54)
 ScrollFrame.Position              = UDim2.new(0, 4, 0, 50)
@@ -222,7 +222,7 @@ listLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
     ScrollFrame.CanvasSize = UDim2.new(0, 0, 0, listLayout.AbsoluteContentSize.Y + 12)
 end)
 
-
+-- ── Sky data ──────────────────────────────────────────────────────────────
 local skyThemes = {
     {name="Night Galaxy Planets", Up="rbxassetid://15983964246",Dn="rbxassetid://15983966825",Lf="rbxassetid://15983967420",Rt="rbxassetid://15983966246",Ft="rbxassetid://15983965025",Bk="rbxassetid://15983968922"},
     {name="Purple Space",         Up="rbxassetid://14543371676",Dn="rbxassetid://14543358958",Lf="rbxassetid://14543275895",Rt="rbxassetid://14543280890",Ft="rbxassetid://14543257810",Bk="rbxassetid://14543264135"},
@@ -238,7 +238,7 @@ local skyThemes = {
     {name="Wide Street",          Up="rbxassetid://11805842108",Dn="rbxassetid://11805844871",Lf="rbxassetid://11805843612",Rt="rbxassetid://11805841159",Ft="rbxassetid://11805842926",Bk="rbxassetid://11805845809"},
 }
 
-
+-- ── Row builder — hub button style ───────────────────────────────────────
 local activeRow = nil
 
 local function makeRow(data, index)
@@ -259,7 +259,7 @@ local function makeRow(data, index)
     btnStroke.Thickness   = 1
     btnStroke.Transparency = 0.7
 
-   
+    -- Left accent bar (hub list item style — 2px vertical bar)
     local acBar = Instance.new("Frame", btn)
     acBar.Size             = UDim2.new(0, 2, 1, -10)
     acBar.Position         = UDim2.new(0, 6, 0.5, 0)
@@ -270,7 +270,7 @@ local function makeRow(data, index)
     acBar.ZIndex           = 4
     Instance.new("UICorner", acBar).CornerRadius = UDim.new(1, 0)
 
-    
+    -- Abbreviation badge (matches hub admin panel / card style)
     local badge = Instance.new("Frame", btn)
     badge.Size             = UDim2.new(0, 30, 0, 30)
     badge.Position         = UDim2.new(0, 14, 0.5, -15)
@@ -289,7 +289,7 @@ local function makeRow(data, index)
     badgeTxt.Font                  = Enum.Font.GothamBold
     badgeTxt.ZIndex                = 5
 
-    
+    -- Name label
     local nameLbl = Instance.new("TextLabel", btn)
     nameLbl.Size                  = UDim2.new(1, -100, 0, 18)
     nameLbl.Position              = UDim2.new(0, 52, 0, 8)
@@ -301,7 +301,7 @@ local function makeRow(data, index)
     nameLbl.TextXAlignment        = Enum.TextXAlignment.Left
     nameLbl.ZIndex                = 4
 
-    
+    -- Status label (subtext style matching hub)
     local statusLbl = Instance.new("TextLabel", btn)
     statusLbl.Size                  = UDim2.new(1, -100, 0, 12)
     statusLbl.Position              = UDim2.new(0, 52, 0, 26)
@@ -313,7 +313,7 @@ local function makeRow(data, index)
     statusLbl.TextXAlignment        = Enum.TextXAlignment.Left
     statusLbl.ZIndex                = 4
 
-   
+    -- Arrow chevron (right side, hub style)
     local arrow = Instance.new("TextLabel", btn)
     arrow.Size                  = UDim2.new(0, 20, 1, 0)
     arrow.Position              = UDim2.new(1, -24, 0, 0)
@@ -325,7 +325,7 @@ local function makeRow(data, index)
     arrow.Font                  = Enum.Font.GothamBold
     arrow.ZIndex                = 4
 
-   
+    -- Hover
     btn.MouseEnter:Connect(function()
         if btn ~= activeRow then
             TweenService:Create(btn, TweenInfo.new(0.12), {BackgroundColor3 = rowHover}):Play()
@@ -341,7 +341,7 @@ local function makeRow(data, index)
         TweenService:Create(arrow, TweenInfo.new(0.12), {TextTransparency = 0.6}):Play()
     end)
 
-   
+    -- Click — apply sky
     btn.MouseButton1Click:Connect(function()
         clickSound()
 
@@ -352,16 +352,16 @@ local function makeRow(data, index)
             if ps then TweenService:Create(ps, TweenInfo.new(0.15), {Transparency = 0.7}):Play() end
         end
 
-
+        -- Select this
         activeRow = btn
         TweenService:Create(btn, TweenInfo.new(0.15), {BackgroundColor3 = Color3.fromRGB(20, 38, 100)}):Play()
         TweenService:Create(btnStroke, TweenInfo.new(0.15), {Transparency = 0}):Play()
 
-        k
+        -- Applying feedback
         statusLbl.Text       = "Applying..."
         statusLbl.TextColor3 = accentColor
 
-       
+        -- Apply sky
         local existing = game.Lighting:FindFirstChildOfClass("Sky")
         if existing then existing:Destroy() end
         local sky = Instance.new("Sky")
@@ -380,7 +380,7 @@ for i, theme in ipairs(skyThemes) do
     makeRow(theme, i)
 end
 
-
+-- ── Close ─────────────────────────────────────────────────────────────────
 CloseButton.MouseButton1Click:Connect(function()
     clickSound()
     TweenService:Create(MainContainer, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.In),
@@ -389,7 +389,7 @@ CloseButton.MouseButton1Click:Connect(function()
     ScreenGui:Destroy()
 end)
 
-
+-- ── Minimize ──────────────────────────────────────────────────────────────
 local minimized   = false
 local originalSize = MainContainer.Size
 MinimizeButton.MouseButton1Click:Connect(function()
@@ -406,7 +406,7 @@ MinimizeButton.MouseButton1Click:Connect(function()
     end
 end)
 
-
+-- ── Drag (title area only, same pattern as hub) ───────────────────────────
 local TitleDragBar = Instance.new("Frame", MainContainer)
 TitleDragBar.Size                   = UDim2.new(1, -64, 0, 44)
 TitleDragBar.Position               = UDim2.new(0, 0, 0, 0)
